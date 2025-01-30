@@ -28,8 +28,6 @@ services:
         condition: service_healthy
     environment:
       ConnectionStrings__DefaultConnection: "Server=mysql_container;Port=3306;Database=todosdb;User=myuser;Password=mypassword;"
-    volumes:
-      - api_logs:/app/logs  
     networks:
       - app_network
 
@@ -41,8 +39,6 @@ services:
       - api
     ports:
       - "80:80"
-    volumes:
-      - nginx_logs:/var/log/nginx 
     networks:
       - app_network
 
