@@ -2,36 +2,48 @@ version: '3.8'
 
 services:
   mysql:
-    image: djamka/mysql:8.0
-    container_name: mysql_container
+    image: mysql:8.0
+    container_name: mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: todosdb
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypassword
+    volumes:
+      - mysql_data:/var/lib/mysql  
     networks:
       - app_network
 
   api:
     image: djamka/todosapi
-    container_name: api_container
+    container_name: dotnet_api
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     environment:
       ConnectionStrings__DefaultConnection: "Server=mysql_container;Port=3306;Database=todosdb;User=myuser;Password=mypassword;"
+    volumes:
+      - api_logs:/app/logs  
     networks:
       - app_network
 
   nginx:
     image: djamka/nginx
-    container_name: nginx_container
+    container_name: nginx
     depends_on:
       - api
     ports:
       - "80:80"
+    volumes:
+      - nginx_logs:/var/log/nginx 
     networks:
       - app_network
 
 networks:
   app_network:
+
+volumes:
+  mysql_data: 
+  api_logs: 
+  nginx_logs:  
