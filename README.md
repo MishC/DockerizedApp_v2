@@ -106,6 +106,10 @@ http://localhost/api/todos
  
  #### Pull from Docker Hub and run containers on your local 
 	
+	docker pull djamka/mysql:8.0
+	docker pull djamka/todosapi
+	docker pull djamka/nginx
+	
 	cd docker-setup
     docker-compose up -d
 	
