@@ -77,7 +77,18 @@ http://localhost/api/todos
   * djamka/todosapi 
   * djamka/nginx
 
-  #### Pull and run from Docker Hub
+  ## Check all repositories
+  ```
+  docker ps -a
+  ```
+  #### Remove all conflicting containers and images
+  ```
+  docker rmi -f djamka/mysql:8.0 djamka/todosapi djamka/nginx
+  docker rm -f mysql_container api_container nginx_container
+  ```
+  Names may vary depending on the name of the containers and images on your local machine.
+ 
+ #### Pull and run from Docker Hub
 	
 	cd docker-setup
     docker-compose up -d
