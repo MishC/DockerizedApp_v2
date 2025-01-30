@@ -98,3 +98,6 @@ http://localhost/api/todos
 	cd docker-setup
     docker-compose up -d
 	
+	## Or give absolute path to the docker-compose.yml file
+	
+	docker-compose -f ./../docker_compose.yml up -d --build
