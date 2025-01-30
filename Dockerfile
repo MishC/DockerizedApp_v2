@@ -5,15 +5,23 @@ WORKDIR /app
 # Use SDK image to build the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY TodosApi.csproj ./
-RUN dotnet restore "TodosApi.csproj"
 
+# Copy everything and restore dependencies
+COPY ["./TodosApi.csproj", "TodosApi/"]
+WORKDIR "/src/TodosApi"
+RUN dotnet restore
+
+# Copy the entire project and publish
 COPY . .
-WORKDIR "/src"
 RUN dotnet publish -c Release -o /app/publish
 
-# Final stage: run the application
+# Final stage: Run the application
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
+
+# Expose port (inside Docker network)
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080
+
+# Start the application
 ENTRYPOINT ["dotnet", "TodosApi.dll"]
