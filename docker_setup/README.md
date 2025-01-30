@@ -8,6 +8,7 @@ This docker-compose.yml works with the external images from the Docker Hub.
 
 ## Build and Run All Containers
 
+docker-compose down
 docker-compose up -d
 
 

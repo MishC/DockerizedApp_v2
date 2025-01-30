@@ -83,12 +83,17 @@ http://localhost/api/todos
   ```
   #### Remove all conflicting containers and images
   ```
+  docker compose down
+
+  ```
+  You can remove images and containers manually by running the following commands:
+  ```
   docker rmi -f djamka/mysql:8.0 djamka/todosapi djamka/nginx
   docker rm -f mysql_container api_container nginx_container
   ```
   Names may vary depending on the name of the containers and images on your local machine.
  
- #### Pull and run from Docker Hub
+ #### Pull from Docker Hub and run containers on your local 
 	
 	cd docker-setup
     docker-compose up -d
