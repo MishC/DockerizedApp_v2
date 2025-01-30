@@ -20,12 +20,12 @@ services:
 
   api:
     image: djamka/todosapi
-    container_name: dotnet_api
+    container_name: dotnet_api_container  #it must be this name because it is used in the nginx configuration
     depends_on:
       mysql:
         condition: service_healthy
     environment:
-      ConnectionStrings__DefaultConnection: "Server=mysql_container;Port=3306;Database=todosdb;User=myuser;Password=mypassword;"
+      ConnectionStrings__DefaultConnection: "Server=mysql;Port=3306;Database=todosdb;User=myuser;Password=mypassword;"
     networks:
       - app_network
 
