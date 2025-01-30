@@ -17,15 +17,26 @@ The application is built using the following technologies:
 
 
 
-## Build and run the project from your local computer
+## Build and run the project in detached mode from your local computer
 ```
-docker-compose up --build
+docker-compose up -d --build
 ```
 ## Check running containers
 ```
 docker ps
 ```
+## Check logs of a container
+```
+docker logd mysql_container
+docker logs dotnet_api_container
+docker logs nginx_container
+```
 ## Stop running containers
+```
+docker-compose down
+```
+or 
+
 ```
 docker stop mysql_container dotnet_api_container nginx_container
 ```
