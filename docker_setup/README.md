@@ -6,6 +6,12 @@ This docker-compose.yml works with the external images from the Docker Hub.
   * djamka/todosapi 
   * djamka/nginx
 
+```
+docker pull djamka/mysql:8.0
+docker pull djamka/todosapi
+docker pull djamka/nginx
+```
+
 ## Build and Run All Containers
 ```
 docker-compose down
