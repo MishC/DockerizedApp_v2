@@ -17,6 +17,9 @@ services:
       interval: 10s
       retries: 5
       timeout: 5s
+    volumes:
+      - mysql_data:/var/lib/mysql
+
 
 
   api:
@@ -42,3 +45,6 @@ services:
 
 networks:
   app_network:
+
+volumes:
+  mysql_data: 
