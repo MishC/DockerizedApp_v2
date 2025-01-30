@@ -78,14 +78,7 @@ http://localhost/api/todos
   * djamka/nginx
 
   #### Pull and run from Docker Hub
-    
-	    
-	docker pull djamka/nginx:latest
-	docker pull djamka/todosapi:latest
-	docker pull djamka/mysql:8.0
-
-	docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=rootpassword -p 3306:3306 djamka/mysql:8.0
-	docker run -d --name api -p 8080:8080 djamka/todosapi
-	docker run -d --name nginx -p 80:80 djamka/nginx
 	
+	cd docker-setup
+    docker-compose up -d
 	
